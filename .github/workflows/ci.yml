@@ -1,0 +1,23 @@
+
+name: DevOps Agent Lab CI
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Successful build step
+        run: echo "Build started successfully"
+
+      - name: Simulate build failure
+        run: |
+          echo "ERROR: Maven dependency resolution failed"
+          echo "Could not resolve artifact: com.example:demo:1.0"
+          exit 1
